@@ -1,0 +1,10 @@
+//EX 20:Program to handle an uncaughtexception event
+//using global process object that inteacts with the currently
+//running process. When 
+var EventEmitter = require('events').EventEmitter;
+var emitter = new EventEmitter();
+process.on('uncaughtException',function(error){
+    console.error(error.message);
+    process.exit(-1);
+});
+emitter.emit('error',new Error('our error is bad and we feel bad'));
